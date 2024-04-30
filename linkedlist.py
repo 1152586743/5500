@@ -68,14 +68,15 @@ class LinkedList:
   def sort(self):
       if self.root is None or self.root.next is None:
           return
-      # Bubble sort 
+      # Bubble sort
       changed = True
       while changed:
           current = self.root
           prev = None
           changed = False
           while current is not None and current.next is not None:
-              if current.content > current.next.content:
+              # Ensure the comparison is done with integer values
+              if int(current.content) > int(current.next.content):
                   changed = True
                   if prev is None:
                       tmp = current.next
@@ -91,7 +92,7 @@ class LinkedList:
                       prev = tmp
               else:
                   prev = current
-                  current = current.next      
+                  current = current.next     
         
   def __len__(self) -> int:
     if self.root is None:
